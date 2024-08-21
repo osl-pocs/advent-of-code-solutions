@@ -1,6 +1,13 @@
+# ----------------------------------------------------------------------------
+# setup
+# ----------------------------------------------------------------------------
+
 with open("input", "r") as f:
     content = f.readlines()
 
+# ----------------------------------------------------------------------------
+# part 1
+# ----------------------------------------------------------------------------
 
 def part1(content):
     numbers = []
@@ -25,13 +32,26 @@ def part1(content):
         if number:
             numbers.append(int(number))
 
+    result = sum(numbers)
+    print(result)
+    return result
 
-    print(sum(numbers))
+test_data_part1 = [
+    "1abc2",
+    "pqr3stu8vwx",
+    "a1b2c3d4e5f",
+    "treb7uchet",
+]
 
+assert part1(test_data_part1) == 142
+part1(content)
+
+# ----------------------------------------------------------------------------
+# part 2
+# ----------------------------------------------------------------------------
 
 def part2(content):
     numbers_map = {
-        "zero": "0",
         "one": "1",
         "two": "2",
         "three": "3",
@@ -70,18 +90,13 @@ def part2(content):
 
         if first_number:
             number = first_number
-        if last_number:
-            number += last_number
-        else:
-            number += number
+        number += last_number if last_number else number
         if number:
             numbers.append(int(number))
 
     result = sum(numbers)
     print(result)
     return result
-
-# part1(content)
 
 test_data_part2 = [
     "two1nine",
