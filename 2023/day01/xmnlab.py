@@ -82,7 +82,9 @@ def part2(content):
                     continue
 
                 c = numbers_map[found_number]
-            number_text = ""
+                number_text = number_text[-1]
+            else:
+                number_text = ""
             if not first_number:
                 first_number = c
             else:
@@ -92,6 +94,7 @@ def part2(content):
             number = first_number
         number += last_number if last_number else number
         if number:
+            print(">>", line.replace("\n", ""), number)
             numbers.append(int(number))
 
     result = sum(numbers)
